@@ -3,6 +3,7 @@ package com.mkyong.web.controller.api;
 import com.mkyong.web.controller.BeanTestMotherFuckerController;
 import com.mkyong.web.model.Client;
 import com.mkyong.web.model.Doctor;
+import com.mkyong.web.model.Pet;
 import com.mkyong.web.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,44 +60,35 @@ public class UtilsApi {
     }
 
 
-//    //current -- http://localhost:8080/dasha/resources/editDoctor.html?id=1
-//
-//    //    localhost:8080/dasha/api/doctor?id=5&name=anton
-//    @RequestMapping(method = RequestMethod.GET)
-//    public @ResponseBody
-//    Object get(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "name") String name) {
-//        System.out.println("id = [" + id + "], name = [" + name + "]");
-//
-//        if (id == null) {
-//            return doctorService.getAll();
-//        } else {
-//            return doctorService.getById(id);
-//        }
-//
-//    }
-//
-//    @RequestMapping(method = RequestMethod.POST)
-//    public @ResponseBody
-//    Object edit(Doctor doctor) {
-//
-//        if (fieldsValidation(doctor)) {
-//
-//            doctorService.saveOrUpdate(doctor);
-//            System.out.println("POST  " + doctor);
-//            return "{\"status\":\"ok\"}";
-//
-//        } else {
-//            return "{\"status\":\"Error\", \"message\":\"Invalid Input Data on Server\"}";
-//        }
-//    }
-//
-//    @RequestMapping(method = RequestMethod.DELETE)
-//    public @ResponseBody
-//    String delete(@RequestParam(value = "id") Integer id) {
-//        doctorService.delete(id);
-//        return "{\"status\":\"ok\"}";
-//    }
+    public static Map<String, String> fieldsValidation(Pet pet) {
 
+        Map<String, String> validationResult = new HashMap<>();
+
+        if (pet.getName().length() < 2){
+            validationResult.put("name", "length of this field should be greater than 4 characters");
+        }
+        if (pet.getSpecies().length() < 2){
+            validationResult.put("species", "length of this field should be greater than 4 characters");
+        }
+
+        if (pet.getAge() < 0 || pet.getAge() > 350) {
+            validationResult.put("age", "value of this field should be in range from 0 to 150");
+        }
+
+        if (pet.getMaster().length() < 3){
+            validationResult.put("master", "length of this field should be greater than 6 characters");
+        }
+
+        if (pet.getDoctor().length() < 3){
+            validationResult.put("doctor", "length of this field should be greater than 6 characters");
+        }
+
+        if (pet.getIllness().length() < 3){
+            validationResult.put("illness", "length of this field should be greater than 6 characters");
+        }
+
+        return validationResult;
+    }
 
 }
 

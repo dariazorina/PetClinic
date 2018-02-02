@@ -9,9 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-
-
 public class ClientDaoImpl implements ClientDAO {
+
     @Autowired
     private SessionFactory sessionFactory;
 

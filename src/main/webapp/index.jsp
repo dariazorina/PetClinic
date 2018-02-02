@@ -1,12 +1,4 @@
 
-<%--<script>--%>
-    <%--window.onload = function () {--%>
-      <%--//  alert('Document and all sources loaded');--%>
-    <%--};--%>
-<%--</script>--%>
-<%--<iframe src="https://example.com/" style="height:60px"></iframe>--%>
-<%--<img src="https://js.cx/clipart/yozhik.jpg?speed=1">--%>
-
 <br><br><br><br>
 <div class="container">
     <h1>Our Pet Clinic</h1>
@@ -54,7 +46,7 @@
                     <ul>
                         <li><a href="./doctor/list">Doctors</a></li>
                         <li><a href="./client/list">Clients</a></li>
-                        <li><a href="./resources/pets.jsp">Pets</a></li>
+                        <li><a href="./pet/list">Pets</a></li>
                     </ul>
                     </p>
 

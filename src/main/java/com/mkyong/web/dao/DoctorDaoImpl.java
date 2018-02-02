@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public class DoctorDaoImpl implements DoctorDAO {
+
     @Autowired
     private SessionFactory sessionFactory;
 

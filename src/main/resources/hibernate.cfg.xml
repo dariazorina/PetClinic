@@ -7,5 +7,6 @@
 	<session-factory>
 		<mapping class="com.mkyong.web.model.Doctor" />
 		<mapping class="com.mkyong.web.model.Client" />
+		<mapping class="com.mkyong.web.model.Pet" />
 	</session-factory>
 </hibernate-configuration>
