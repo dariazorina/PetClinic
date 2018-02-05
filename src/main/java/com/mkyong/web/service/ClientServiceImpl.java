@@ -25,12 +25,14 @@ public class ClientServiceImpl implements ClientService {
     @Override
     @Transactional
     public List<Client> getAll() {
+        //without pets
         return clientDAO.getAllClients();
     }
 
     @Override
     @Transactional
     public Client getById(Integer id) {
+        //with pet
         return clientDAO.getClient(id);
     }
 

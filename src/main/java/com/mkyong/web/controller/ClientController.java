@@ -16,11 +16,11 @@ import java.util.Map;
 @RequestMapping("/client")
 public class ClientController {
 
-    @Autowired private ClientService clientService;
-
+    @Autowired
+    private ClientService clientService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView list() { //@PathVariable("name") String name) {
+    public ModelAndView list() {
 
         List<Client> all = clientService.getAll();
 
@@ -29,6 +29,18 @@ public class ClientController {
         model.addObject("clientList", all);
         return model;
     }
+
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ModelAndView clientPage(@RequestParam(value = "id", required = false) Integer id) {
+        Client client = clientService.getById(id);
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("clients/mainPage");
+        model.addObject("client", client);
+        return model;
+    }
+
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam(value = "id", required = false) Integer id) {
@@ -63,7 +75,7 @@ public class ClientController {
             modelAndView.addObject("client", client);
             return modelAndView;
         }
-   }
+    }
 
     @RequestMapping(method = RequestMethod.DELETE)
     public @ResponseBody
@@ -71,9 +83,6 @@ public class ClientController {
         clientService.delete(id);
         return "{\"status\":\"ok\"}";
     }
-
-
-
 
 
 //
@@ -134,6 +143,4 @@ public class ClientController {
 //        request.put("status", "ok");
 //        return request;
 //    }
-
-
 }

@@ -8,7 +8,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script src="path/to/your/script.js"></script>
 
-    <script src="/dasha/resources/core/js/clients.js"></script>
+    <script src="/dasha/resources/core/js/pets.js"></script>
     <link href="/dasha/resources/core/css/table_style.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -23,7 +23,7 @@
                 <th>Name</th>
                 <th>Species</th>
                 <th>Age</th>
-                <th>Master</th>
+                <%--<th>Master</th>--%>
                 <th>Doctor</th>
                 <th>Illness</th>
                 <th>EDIT</th>
@@ -39,7 +39,7 @@
                     <td>${pet.name}</td>
                     <td>${pet.species}</td>
                     <td>${pet.age}</td>
-                    <td>${pet.master}</td>
+                    <%--<td>${pet.master}</td>--%>
                     <td>${pet.doctor}</td>
                     <td>${pet.illness}</td>
                     <td><input type="button" value="EDIT" onclick="editClicked(${pet.id})"/></td>

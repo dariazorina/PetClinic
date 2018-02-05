@@ -23,13 +23,13 @@ function deleteClient(id) {
     });
 }
 
-function redirectFunc(){
-    var link = document.createElement('a');
-    // set your page url
-    link.href = "./list";
-    document.body.appendChild(link);
-    link.click();
-}
+// function redirectFunc(){
+//     var link = document.createElement('a');
+//     // set your page url
+//     link.href = "./list";
+//     document.body.appendChild(link);
+//     link.click();
+// }
 
 
 function addNewClient() {

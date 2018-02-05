@@ -68,6 +68,8 @@ function deleteDoctor(id) {
     });
 }
 
+//TODO - redirectFunc?
+
 function redirectFunc(){
     var link = document.createElement('a');
     // set your page url

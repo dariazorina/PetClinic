@@ -1,6 +1,7 @@
 package com.mkyong.web.dao;
 
 import com.mkyong.web.model.Client;
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,9 @@ public class ClientDaoImpl implements ClientDAO {
 
     @Override
     public Client getClient(Integer id) {
-        return (Client) getCurrentSession().get(Client.class, id);
+        Client client = (Client) getCurrentSession().get(Client.class, id);
+        Hibernate.initialize(client.getPets());
+        return client;
     }
 
     @Override

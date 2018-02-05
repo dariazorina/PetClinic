@@ -24,21 +24,6 @@
 //     }
 // )
 
-// function dataValidationForm(form) {
-//
-//     var allInputs = form.getElementsByTagName('input');
-//     for (index = 1; index < allInputs.length; ++index) {  //index = 0 - hidden id input (?)
-//         if (allInputs[index].value.length == 0) {
-//             return false;
-//         }
-//         if (allInputs[index].type == "number") {
-//             if (allInputs[index].value < 0 || allInputs[index].value > 150)
-//                 return false;
-//         }
-//     }
-//     return true;
-// }
-//
 // // DO POST
 // function postEditedDoctor() {
 //
@@ -61,12 +46,25 @@
 // }
 
 function backToDoctorsList() {
-    location ='../doctor/list';// '../resources/doctors.html';
+    location ='../doctor/list';
 }
 
 function backToClientsList() {
-    location ='../client/list';// '../resources/doctors.html';
+    location ='../client/list';
 }
+
+function backToPetsList() {
+    location ='../pet/list';
+}
+
+function redirectFunc(){
+    var link = document.createElement('a');
+    // set your page url
+    link.href = "./list";
+    document.body.appendChild(link);
+    link.click();
+}
+
 
 // function getUrlParameter(sParam) {
 //     var sPageURL = decodeURIComponent(window.location.search.substring(1)),

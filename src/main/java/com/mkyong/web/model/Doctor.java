@@ -6,11 +6,11 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "Doctor")
+@Table(name = "doctor")
 public class Doctor {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue
     private Integer id;
     private String name;

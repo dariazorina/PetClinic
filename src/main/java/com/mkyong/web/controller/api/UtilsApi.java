@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.Map;
 
-
 @Controller
-@RequestMapping("api/doctor") // /doctors*") ///
+//@RequestMapping("api/doctor") // /doctors*") ///
 public class UtilsApi {
 
     @Autowired
@@ -28,18 +27,22 @@ public class UtilsApi {
 
         Map<String, String> validationResult = new HashMap<>();
 
-        if (doctor.getName().length() < 4){
+        if (doctor.getName().length() < 4) {
             validationResult.put("name", "length of this field should be greater than 4 characters");
         }
-        if (doctor.getSpecialization().length() < 4){
+        if (doctor.getSpecialization().length() < 4) {
             validationResult.put("specialization", "length of this field should be greater than 4 characters");
         }
-        if (doctor.getPhone().length() < 6){
+        if (doctor.getPhone().length() < 6) {
             validationResult.put("phone", "length of this field should be greater than 6 characters");
         }
-        if (doctor.getAge() < 0 || doctor.getAge() > 150) {
+
+        if (doctor.getAge() == null) {
+            validationResult.put("age", "this field shouldn't be empty");
+        } else if (doctor.getAge() < 1 || doctor.getAge() > 150) {
             validationResult.put("age", "value of this field should be in range from 0 to 150");
         }
+
         return validationResult;
     }
 
@@ -47,13 +50,13 @@ public class UtilsApi {
 
         Map<String, String> validationResult = new HashMap<>();
 
-        if (client.getName().length() < 2){
+        if (client.getName().length() < 2) {
             validationResult.put("name", "length of this field should be greater than 4 characters");
         }
-        if (client.getAddress().length() < 4){
+        if (client.getAddress().length() < 4) {
             validationResult.put("address", "length of this field should be greater than 4 characters");
         }
-        if (client.getPhone().length() < 6){
+        if (client.getPhone().length() < 6) {
             validationResult.put("phone", "length of this field should be greater than 6 characters");
         }
         return validationResult;
@@ -64,26 +67,26 @@ public class UtilsApi {
 
         Map<String, String> validationResult = new HashMap<>();
 
-        if (pet.getName().length() < 2){
+        if (pet.getName().length() < 2) {
             validationResult.put("name", "length of this field should be greater than 4 characters");
         }
-        if (pet.getSpecies().length() < 2){
+        if (pet.getSpecies().length() < 2) {
             validationResult.put("species", "length of this field should be greater than 4 characters");
         }
 
-        if (pet.getAge() < 0 || pet.getAge() > 350) {
+        if (pet.getAge() < 1 || pet.getAge() > 350) {
             validationResult.put("age", "value of this field should be in range from 0 to 150");
         }
 
-        if (pet.getMaster().length() < 3){
-            validationResult.put("master", "length of this field should be greater than 6 characters");
-        }
+//        if (pet.getMaster().length() < 3) {
+//            validationResult.put("master", "length of this field should be greater than 6 characters");
+//        }
 
-        if (pet.getDoctor().length() < 3){
+        if (pet.getDoctor().length() < 3) {
             validationResult.put("doctor", "length of this field should be greater than 6 characters");
         }
 
-        if (pet.getIllness().length() < 3){
+        if (pet.getIllness().length() < 3) {
             validationResult.put("illness", "length of this field should be greater than 6 characters");
         }
 
