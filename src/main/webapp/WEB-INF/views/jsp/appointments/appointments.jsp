@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Tom
-  Date: 05.02.2018
-  Time: 18:48
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,7 +8,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script src="path/to/your/script.js"></script>
 
-    <script src="/dasha/resources/core/js/clients.js"></script>
+    <script src="/dasha/resources/core/js/appointments.js"></script>
     <link href="/dasha/resources/core/css/table_style.css" rel="stylesheet" type="text/css" />
 
 </head>
@@ -51,7 +45,7 @@
     </div>
 
     <br><br>
-    <button type="button" onclick="addNewClient()">Add An Appointment</button>
+    <button type="button" onclick="addNewAppointment()">Add An Appointment</button>
 
     <br> <br>
     <a href="../">Back to main</a>

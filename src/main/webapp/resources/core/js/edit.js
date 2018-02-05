@@ -57,6 +57,10 @@ function backToPetsList() {
     location ='../pet/list';
 }
 
+function backToAppointmentsList() {
+    location ='../appointment/list';
+}
+
 function redirectFunc(){
     var link = document.createElement('a');
     // set your page url

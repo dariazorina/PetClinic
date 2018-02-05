@@ -1,6 +1,7 @@
 package com.mkyong.web.controller.api;
 
 import com.mkyong.web.controller.BeanTestMotherFuckerController;
+import com.mkyong.web.model.Appointment;
 import com.mkyong.web.model.Client;
 import com.mkyong.web.model.Doctor;
 import com.mkyong.web.model.Pet;
@@ -16,7 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-//@RequestMapping("api/doctor") // /doctors*") ///
 public class UtilsApi {
 
     @Autowired
@@ -27,8 +27,8 @@ public class UtilsApi {
 
         Map<String, String> validationResult = new HashMap<>();
 
-        if (doctor.getName().length() < 4) {
-            validationResult.put("name", "length of this field should be greater than 4 characters");
+        if (doctor.getName().length() < 2) {
+            validationResult.put("name", "length of this field should be greater than 2 characters");
         }
         if (doctor.getSpecialization().length() < 4) {
             validationResult.put("specialization", "length of this field should be greater than 4 characters");
@@ -51,7 +51,7 @@ public class UtilsApi {
         Map<String, String> validationResult = new HashMap<>();
 
         if (client.getName().length() < 2) {
-            validationResult.put("name", "length of this field should be greater than 4 characters");
+            validationResult.put("name", "length of this field should be greater than 2 characters");
         }
         if (client.getAddress().length() < 4) {
             validationResult.put("address", "length of this field should be greater than 4 characters");
@@ -68,14 +68,14 @@ public class UtilsApi {
         Map<String, String> validationResult = new HashMap<>();
 
         if (pet.getName().length() < 2) {
-            validationResult.put("name", "length of this field should be greater than 4 characters");
+            validationResult.put("name", "length of this field should be greater than 2 characters");
         }
         if (pet.getSpecies().length() < 2) {
-            validationResult.put("species", "length of this field should be greater than 4 characters");
+            validationResult.put("species", "length of this field should be greater than 2 characters");
         }
 
         if (pet.getAge() < 1 || pet.getAge() > 350) {
-            validationResult.put("age", "value of this field should be in range from 0 to 150");
+            validationResult.put("age", "value of this field should be in range from 1 to 350");
         }
 
 //        if (pet.getMaster().length() < 3) {
@@ -88,6 +88,26 @@ public class UtilsApi {
 
         return validationResult;
     }
+
+
+    public static Map<String, String> fieldsValidation(Appointment appointment) {
+
+        Map<String, String> validationResult = new HashMap<>();
+
+        if (appointment.getDoctor_name().length() < 2) {
+            validationResult.put("doctor_name", "length of this field should be greater than 2 characters");
+        }
+        if (appointment.getPet_name().length() < 2) {
+            validationResult.put("pet_name", "length of this field should be greater than 2 characters");
+        }
+
+        if (appointment.getDate().length() < 4) {
+            validationResult.put("date", "value of this field should be greater than 4 characters");
+        }
+
+        return validationResult;
+    }
+
 
 }
 
