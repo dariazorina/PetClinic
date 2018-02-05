@@ -26,7 +26,7 @@
 <div class="container">
     <h1>Doctors List JSP ${msg}</h1>
     <div class="row col-md-7 table-responsive">
-        <table id="customerTable" class="table table-bordered table-hover">
+        <table id="doctorTable" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th>Id</th>

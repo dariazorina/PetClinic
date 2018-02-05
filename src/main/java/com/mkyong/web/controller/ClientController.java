@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-//@SessionAttributes("myRequestObject")
 @RequestMapping("/client")
 public class ClientController {
 

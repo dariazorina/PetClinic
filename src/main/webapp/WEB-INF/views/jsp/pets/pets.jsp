@@ -24,7 +24,6 @@
                 <th>Species</th>
                 <th>Age</th>
                 <%--<th>Master</th>--%>
-                <th>Doctor</th>
                 <th>Illness</th>
                 <th>EDIT</th>
                 <th>DELETE</th>
@@ -40,7 +39,6 @@
                     <td>${pet.species}</td>
                     <td>${pet.age}</td>
                     <%--<td>${pet.master}</td>--%>
-                    <td>${pet.doctor}</td>
                     <td>${pet.illness}</td>
                     <td><input type="button" value="EDIT" onclick="editClicked(${pet.id})"/></td>
                     <td><input type="button" value="DELETE" onclick="deleteClicked(${pet.id})"></td>

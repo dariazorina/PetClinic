@@ -82,11 +82,7 @@ public class UtilsApi {
 //            validationResult.put("master", "length of this field should be greater than 6 characters");
 //        }
 
-        if (pet.getDoctor().length() < 3) {
-            validationResult.put("doctor", "length of this field should be greater than 6 characters");
-        }
-
-        if (pet.getIllness().length() < 3) {
+                if (pet.getIllness().length() < 3) {
             validationResult.put("illness", "length of this field should be greater than 6 characters");
         }
 

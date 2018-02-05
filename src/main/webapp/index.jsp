@@ -47,6 +47,7 @@
                         <li><a href="./doctor/list">Doctors</a></li>
                         <li><a href="./client/list">Clients</a></li>
                         <li><a href="./pet/list">Pets</a></li>
+                        <li><a href="./appointment/list">Appointments</a></li>
                     </ul>
                     </p>
 

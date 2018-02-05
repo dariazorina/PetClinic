@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Tom
-  Date: 23.01.2018
-  Time: 18:15
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -18,20 +11,12 @@
     <script src="/dasha/resources/core/js/clients.js"></script>
     <link href="/dasha/resources/core/css/table_style.css" rel="stylesheet" type="text/css" />
 
-    <%--<script src="../resources/core/js/doctors.js"></script>--%>
-    <%--http://localhost:8080/dasha  /resources/core/js/doctors.js--%>
-    <%--http://localhost:8080/dasha -> controllers--%>
-    <%--http://localhost:8080/dasha -> jsp--%>
-
-
-    <%--D:\PROJECTS\DASHA\spring3-mvc-maven-xml-hello-world\src\main\webapp\resources\core\js\doctors.js--%>
-
 </head>
 <body>
 <div class="container">
     <h1>Clients List</h1>
     <div class="row col-md-7 table-responsive">
-        <table id="customerTable" class="table table-bordered table-hover">
+        <table id="clientTable" class="table table-bordered table-hover">
             <thead>
             <tr>
                 <th>Id</th>

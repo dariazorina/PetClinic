@@ -15,7 +15,6 @@ public class Pet {
     private String name;
     private String species;
     private Integer age;
-    private String doctor;
     private String illness;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -25,11 +24,10 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(String name, String species, Integer age, String doctor, String illness) {
+    public Pet(String name, String species, Integer age, String illness) {
         this.name = name;
         this.species = species;
         this.age = age;
-        this.doctor = doctor;
         this.illness = illness;
     }
 
@@ -65,14 +63,6 @@ public class Pet {
         this.age = age;
     }
 
-    public String getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
-    }
-
     public String getIllness() {
         return illness;
     }
@@ -99,9 +89,6 @@ public class Pet {
         // return realObj.getMaser();
         //
         // }
-
-
-
 
         return master;
     }

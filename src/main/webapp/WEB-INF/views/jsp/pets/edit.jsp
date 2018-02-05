@@ -55,15 +55,6 @@
             </td>
         </tr>--%>
         <tr>
-            <td>Doctor:</td>
-            <td><form:input path="doctor" /></td>
-            <td>
-                <c:if test="${ !empty errorMessages}">
-                    ${errorMessages.get("doctor")}
-                </c:if>
-            </td>
-        </tr>
-        <tr>
             <td>Illness:</td>
             <td><form:input path="illness" /></td>
             <td>
