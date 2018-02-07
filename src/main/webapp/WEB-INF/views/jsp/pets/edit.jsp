@@ -11,6 +11,7 @@
 </head>
 <body>
 <% String path = "../pet/edit?client_id="+request.getParameter("client_id"); %>"
+
 <form:form method="POST" commandName="pet" id="edit_pet_form" action="<%=path%>">
     <form:input path="id" type="hidden" />
 
@@ -54,15 +55,7 @@
                 </c:if>
             </td>
         </tr>--%>
-        <tr>
-            <td>Illness:</td>
-            <td><form:input path="illness" /></td>
-            <td>
-                <c:if test="${ !empty errorMessages}">
-                    ${errorMessages.get("illness")}
-                </c:if>
-            </td>
-        </tr>
+
         <tr>
                 <%--<td colspan="2"><input type="submit" value="SAVE"></td>--%>
             <td colspan="2">

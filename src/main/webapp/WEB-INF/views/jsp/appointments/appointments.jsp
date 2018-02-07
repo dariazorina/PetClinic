@@ -20,8 +20,8 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Doctor</th>
-                <th>Pet</th>
+                <%--<th>Doctor</th>--%>
+                <%--<th>Pet</th>--%>
                 <th>Date</th>
                 <th>EDIT</th>
                 <th>DELETE</th>
@@ -33,8 +33,8 @@
             <c:forEach var="appointment" items="${appointmentList}">
                 <tr>
                     <td>${appointment.id}</td>
-                    <td>${appointment.doctor_name}</td>
-                    <td>${appointment.pet_name}</td>
+                    <%--<td>${appointment.doctor_name}</td>--%>
+                    <%--<td>${appointment.pet_name}</td>--%>
                     <td>${appointment.date}</td>
                     <td><input type="button" value="EDIT" onclick="editClicked(${appointment.id})"/></td>
                     <td><input type="button" value="DELETE" onclick="deleteClicked(${appointment.id})"></td>

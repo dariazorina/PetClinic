@@ -78,14 +78,6 @@ public class UtilsApi {
             validationResult.put("age", "value of this field should be in range from 1 to 350");
         }
 
-//        if (pet.getMaster().length() < 3) {
-//            validationResult.put("master", "length of this field should be greater than 6 characters");
-//        }
-
-                if (pet.getIllness().length() < 3) {
-            validationResult.put("illness", "length of this field should be greater than 6 characters");
-        }
-
         return validationResult;
     }
 
@@ -94,12 +86,12 @@ public class UtilsApi {
 
         Map<String, String> validationResult = new HashMap<>();
 
-        if (appointment.getDoctor_name().length() < 2) {
-            validationResult.put("doctor_name", "length of this field should be greater than 2 characters");
-        }
-        if (appointment.getPet_name().length() < 2) {
-            validationResult.put("pet_name", "length of this field should be greater than 2 characters");
-        }
+//        if (appointment.getDoctor_name().length() < 2) {
+//            validationResult.put("doctor_name", "length of this field should be greater than 2 characters");
+//        }
+//        if (appointment.getPet_name().length() < 2) {
+//            validationResult.put("pet_name", "length of this field should be greater than 2 characters");
+//        }
 
         if (appointment.getDate().length() < 4) {
             validationResult.put("date", "value of this field should be greater than 4 characters");

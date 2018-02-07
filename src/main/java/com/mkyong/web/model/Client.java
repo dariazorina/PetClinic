@@ -22,7 +22,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(Integer id, String name, String address, String phone, List<Pet> pet) {
+    public Client(Integer id, String name, String address, String phone) {
         this.id = id;
         this.name = name;
         this.address = address;

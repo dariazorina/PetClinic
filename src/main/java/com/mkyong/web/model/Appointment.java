@@ -1,6 +1,7 @@
 package com.mkyong.web.model;
 
 import javax.persistence.*;
+import javax.print.Doc;
 
 @Entity
 @Table(name = "appointment")
@@ -10,9 +11,18 @@ public class Appointment {
     @GeneratedValue
     private Integer id;
 
-    private String doctor_name;
-    private String pet_name;
-    private String date;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "doctor_id", nullable = false)
+    private Doctor doctor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pet_id", nullable = false)
+    private Pet pet;
+
+    private String date; //TODO Date
+    private String status; //Enum
+    private String comment; //Comment
+
 
     public Appointment() {
     }
@@ -25,20 +35,20 @@ public class Appointment {
         this.id = id;
     }
 
-    public String getDoctor_name() {
-        return doctor_name;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setDoctor_name(String doctor_name) {
-        this.doctor_name = doctor_name;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
-    public String getPet_name() {
-        return pet_name;
+    public Pet getPet() {
+        return pet;
     }
 
-    public void setPet_name(String pet_name) {
-        this.pet_name = pet_name;
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
     public String getDate() {
@@ -47,6 +57,22 @@ public class Appointment {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }
 

@@ -3,6 +3,7 @@ package com.mkyong.web.model;
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "pet")
@@ -15,11 +16,13 @@ public class Pet {
     private String name;
     private String species;
     private Integer age;
-    private String illness;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
     private Client master;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet")
+    private Set<Appointment> appointment;
 
     public Pet() {
     }
@@ -28,7 +31,6 @@ public class Pet {
         this.name = name;
         this.species = species;
         this.age = age;
-        this.illness = illness;
     }
 
     public Integer getId() {
@@ -61,14 +63,6 @@ public class Pet {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    public String getIllness() {
-        return illness;
-    }
-
-    public void setIllness(String illness) {
-        this.illness = illness;
     }
 
     public Client getMaster() {
