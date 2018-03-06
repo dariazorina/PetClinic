@@ -2,7 +2,9 @@ package com.mkyong.web.service;
 
 
 import com.mkyong.web.dao.ClientDAO;
+import com.mkyong.web.model.Appointment;
 import com.mkyong.web.model.Client;
+import com.mkyong.web.model.dto.AppointmentDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,4 +50,9 @@ public class ClientServiceImpl implements ClientService {
         clientDAO.addClient(client);
     }
 
+    @Override
+    @Transactional
+    public List<AppointmentDto> getAppointments(Integer id) {
+        return clientDAO.getAppointments(id);
+    }
 }

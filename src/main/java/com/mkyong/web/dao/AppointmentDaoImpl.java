@@ -2,6 +2,7 @@ package com.mkyong.web.dao;
 
 import com.mkyong.web.model.Appointment;
 //import org.hibernate.Hibernate;
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +18,18 @@ public class AppointmentDaoImpl implements AppointmentDAO {
 
     @Override
     public Appointment getAppointment(Integer id) {
-        Appointment client = (Appointment) getCurrentSession().get(Appointment.class, id);
-      ///////////////////////////  Hibernate.initialize(client.getPets());
-        return client;
+        Appointment appointment = (Appointment) getCurrentSession().get(Appointment.class, id);
+        Hibernate.initialize(appointment.getDoctor());
+        Hibernate.initialize(appointment.getPet());
+        return appointment;
     }
 
     @Override
     public void addAppointment(Appointment appointment) {
+
+//        Hibernate.initialize(appointment.getDoctor());
+//        Hibernate.initialize(appointment.getPet());
+
         getCurrentSession().saveOrUpdate(appointment);
     }
 

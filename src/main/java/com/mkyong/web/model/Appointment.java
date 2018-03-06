@@ -13,11 +13,11 @@ public class Appointment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_id", nullable = false)
-    private Doctor doctor;
+    private Doctor doctor = new Doctor();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pet_id", nullable = false)
-    private Pet pet;
+    private Pet pet = new Pet();
 
     private String date; //TODO Date
     private String status; //Enum

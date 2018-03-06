@@ -53,34 +53,33 @@ function backToClientsList() {
     location ='../client/list';
 }
 
-function backToPetsList() {
-    location ='../pet/list';
+function backToPetsList(client_id) {
+    location = '../client?id='+client_id;
+   // location ='../pet/list';
 }
 
-function backToAppointmentsList() {
-    location ='../appointment/list';
+function backToAppointmentsList(pet_id) {
+    location = '../appointment/edit?pet_id='+pet_id;
+    //location ='../appointment/list';
 }
 
 function redirectFunc(){
-    var link = document.createElement('a');
-    // set your page url
-    link.href = "./list";
-    document.body.appendChild(link);
-    link.click();
+
+    location.reload();
+
+    // var link = document.createElement('a');
+    // // set your page url
+    // link.href = "./list";
+    // document.body.appendChild(link);
+    // link.click();
 }
 
+function makeAnAppointment(client_id, pet_id) {
+   // location ='../appointment/edit?pet_id=' + pet_id;
 
-// function getUrlParameter(sParam) {
-//     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-//         sURLVariables = sPageURL.split('&'),
-//         sParameterName,
-//         i;
-//
-//     for (i = 0; i < sURLVariables.length; i++) {
-//         sParameterName = sURLVariables[i].split('=');
-//
-//         if (sParameterName[0] === sParam) {
-//             return sParameterName[1] === undefined ? true : sParameterName[1];
-//         }
-//     }
-// };
+    location = "../appointment/edit?client_id=" + client_id + "&pet_id=" + pet_id;
+}
+
+function backToPetsEdit(client_id, pet_id) {
+    location = "../pet/edit?client_id=" + client_id + "&pet_id=" + pet_id;
+}

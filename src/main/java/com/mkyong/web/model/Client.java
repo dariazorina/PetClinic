@@ -1,23 +1,22 @@
 package com.mkyong.web.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "client")
-public class Client {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue
-    private Integer id;
+public class Client extends SystemUser {
+
 
     private String name;
     private String address;
     private String phone;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "master")
-    private Set<Pet> pets;
+    private Set<Pet> pets  = new HashSet<Pet>();
+
 
     public Client() {
     }
@@ -27,15 +26,7 @@ public class Client {
         this.name = name;
         this.address = address;
         this.phone = phone;
-       // this.pet = pet;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+        // this.pet = pet;
     }
 
     public String getName() {
@@ -69,4 +60,6 @@ public class Client {
     public void setPets(Set<Pet> pets) {
         this.pets = pets;
     }
+
+
 }

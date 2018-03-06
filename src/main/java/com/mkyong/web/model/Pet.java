@@ -22,7 +22,7 @@ public class Pet {
     private Client master;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet")
-    private Set<Appointment> appointment;
+    private Set<Appointment> appointments;
 
     public Pet() {
     }
@@ -90,4 +90,13 @@ public class Pet {
     public void setMaster(Client master) {
         this.master = master;
     }
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
 }

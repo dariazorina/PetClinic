@@ -3,8 +3,10 @@ package com.mkyong.web.controller;
 
 import com.mkyong.web.controller.api.UtilsApi;
 import com.mkyong.web.model.Client;
+import com.mkyong.web.model.Doctor;
 import com.mkyong.web.model.Pet;
 import com.mkyong.web.service.ClientService;
+import com.mkyong.web.service.DoctorService;
 import com.mkyong.web.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,7 @@ public class PetController {
     private PetService petService;
 
     @Autowired
-    private ClientService clientService;
+    private DoctorService doctorService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() { //@PathVariable("name") String name) {
@@ -40,7 +42,7 @@ public class PetController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView edit(@RequestParam(value = "id", required = false) Integer id) {
+    public ModelAndView edit(@RequestParam(value = "pet_id", required = false) Integer id) {
 
         Pet pet;
         if (id == null) {
@@ -50,24 +52,24 @@ public class PetController {
             pet = petService.getById(id);
         }
 
+        List<Doctor> doctors = doctorService.getAll();
+
         ModelAndView model = new ModelAndView();
         model.setViewName("pets/edit");
         model.addObject("pet", pet);
+        model.addObject("doctors_count", doctors.size());
         return model;
     }
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView edit(Pet pet, @RequestParam(value = "client_id", required = true) Integer id) {
-
-        Client client = clientService.getById(id);
+    public ModelAndView edit(Pet pet) {
 
 
         Map<String, String> validationResult = UtilsApi.fieldsValidation(pet);
         if (validationResult.size() == 0) {
-            pet.setMaster(client);
             petService.saveOrUpdate(pet);
-            return new ModelAndView("redirect:/client?id=" + id);
+            return new ModelAndView("redirect:/client?id=" + pet.getMaster().getId());
         } else {
             ModelAndView modelAndView = new ModelAndView("pets/edit");
             modelAndView.addObject("errorMessages", validationResult);

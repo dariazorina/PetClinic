@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <br><br><br><br>
 <div class="container">
@@ -21,7 +23,7 @@
                 </td>
                 <td width="40%">
 
-                    <form id="edit_doctor_form" action="/j_spring_security_check"> <!-- method="POST" name="ajaxPost()">-->
+                    <form id="edit_doctor_form" action="j_spring_security_check" method="post" accept-charset="UTF-8">
                         <fieldset>
                             <input type="hidden" id="id_id" name="id">
 
@@ -34,7 +36,7 @@
 
                             <input type="checkbox" name="_spring_security_remember_me" value="">spring_security_remember_me<br>
 
-                            <button type="button" onclick="">Login</button>
+                            <button type="submit" onclick="">Login</button>
                             <button type="button" onclick="">Register</button>
 
                         </fieldset>
@@ -48,7 +50,16 @@
                         <li><a href="./client/list">Clients</a></li>
                         <li><a href="./pet/list">Pets</a></li>
                         <li><a href="./appointment/list">Appointments</a></li>
-                    </ul>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <li><a href="./client?id=1">Client id=1</a></li>
+                    <li><a href="./client?id=2">Client id=2</a></li>
+                    <li><a href="./client?id=3">Client id=3</a></li>
+                </ul>
                     </p>
 
                 </td>
@@ -59,3 +70,11 @@
         </table>
     </div>
 </div>
+
+
+
+<%--<sec:authorize access="hasRole('ROLE_ADMIN')">--%>
+
+
+
+<%--</sec:authorize>--%>

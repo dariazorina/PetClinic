@@ -6,29 +6,20 @@ import java.util.Set;
 
 @Entity
 @Table(name = "doctor")
-public class Doctor {
+public class Doctor extends SystemUser {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue
-    private Integer id;
+
     private String name;
     private String specialization;
     private Integer age;
     private String phone;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
-    private Set<Appointment> appointment;
+    private Set<Appointment> appointments;
+
 
     public Doctor() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+       // this.name = "";
     }
 
     public String getName() {
@@ -63,11 +54,12 @@ public class Doctor {
         this.phone = phone;
     }
 
-    public Set<Appointment> getAppointment() {
-        return appointment;
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
     }
 
-    public void setAppointment(Set<Appointment> appointment) {
-        this.appointment = appointment;
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }

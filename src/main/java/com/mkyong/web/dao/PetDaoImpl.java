@@ -1,6 +1,7 @@
 package com.mkyong.web.dao;
 
 import com.mkyong.web.model.Pet;
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,10 @@ public class PetDaoImpl implements PetDAO {
 
     @Override
     public Pet getPet(Integer id) {
-        return (Pet) getCurrentSession().get(Pet.class, id);
+        Pet pet = (Pet) getCurrentSession().get(Pet.class, id);
+        Hibernate.initialize(pet.getMaster());
+        Hibernate.initialize(pet.getAppointments());
+        return pet;
     }
 
     public void addPet(Pet pet) {

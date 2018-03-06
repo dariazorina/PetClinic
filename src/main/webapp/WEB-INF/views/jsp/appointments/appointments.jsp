@@ -6,8 +6,6 @@
 
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script src="path/to/your/script.js"></script>
-
     <script src="/dasha/resources/core/js/appointments.js"></script>
     <link href="/dasha/resources/core/css/table_style.css" rel="stylesheet" type="text/css" />
 

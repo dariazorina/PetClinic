@@ -51,32 +51,49 @@ function deleteClicked(id) {
     }
 }
 
-function deleteDoctor(id) {
 
-       $.ajax({
-        url: "../doctor?id=" + id, // "../api/doctor?id=" + id,
-        type: 'DELETE',
-        success: function (result) {
-           // ajaxGet();
-            alert("Hated doctor was successfully deleted!!!");
+function deleteClicked(id) {
 
-            redirectFunc();
-            //window.location.reload("./list");
-           // location = "./list";
-        }
-        //data: data,
-    });
+    var result = confirm("Do you really want to delete this doctor?");
+    if (result) {
+
+        $.ajax({
+            url: "./doctor?id="+id,
+            type: 'DELETE',
+            success: function (result) {
+                location.reload();
+            }
+        });
+    }
+    return false;
 }
 
-//TODO - redirectFunc?
-
-function redirectFunc(){
-    var link = document.createElement('a');
-    // set your page url
-    link.href = "./list";
-    document.body.appendChild(link);
-    link.click();
-}
+// function deleteDoctor(id) {
+//
+//        $.ajax({
+//         url: "../doctor?id=" + id, // "../api/doctor?id=" + id,
+//         type: 'DELETE',
+//         success: function (result) {
+//            // ajaxGet();
+//             alert("Hated doctor was successfully deleted!!!");
+//
+//             redirectFunc();
+//             //window.location.reload("./list");
+//            // location = "./list";
+//         }
+//         //data: data,
+//     });
+// }
+//
+// //TODO - redirectFunc?
+//
+// function redirectFunc(){
+//     var link = document.createElement('a');
+//     // set your page url
+//     link.href = "./list";
+//     document.body.appendChild(link);
+//     link.click();
+// }
 
 
 function addNewDoctor() {

@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
+//@Controller
 public class UtilsApi {
 
-    @Autowired
+//    @Autowired
     private DoctorService doctorService;
     private BeanTestMotherFuckerController test;
 
@@ -86,11 +86,8 @@ public class UtilsApi {
 
         Map<String, String> validationResult = new HashMap<>();
 
-//        if (appointment.getDoctor_name().length() < 2) {
+//        if (appointment.getDoctor().getName().length() < 2) {
 //            validationResult.put("doctor_name", "length of this field should be greater than 2 characters");
-//        }
-//        if (appointment.getPet_name().length() < 2) {
-//            validationResult.put("pet_name", "length of this field should be greater than 2 characters");
 //        }
 
         if (appointment.getDate().length() < 4) {

@@ -36,7 +36,7 @@
  
 	<mvc:annotation-driven />
 
-	<!--<import resource="security.xml"/>-->
+	<import resource="security.xml"/>
 	<import resource="Hibernate.xml"/>
 	<import resource="DataSource.xml"/>
 

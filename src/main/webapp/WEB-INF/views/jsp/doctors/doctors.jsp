@@ -3,13 +3,7 @@
 <html>
 <head>
     <title>Doctors</title>
-
-
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--%>
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script src="path/to/your/script.js"></script>
-
     <script src="/dasha/resources/core/js/doctors.js"></script>
     <link href="/dasha/resources/core/css/table_style.css" rel="stylesheet" type="text/css" />
 
@@ -43,13 +37,31 @@
 
             <c:forEach var="doctor" items="${doctorList}">
             <tr>
+                <c:url var="thisURL" value="./edit">
+                    <c:param name="id" value="${doctor.id}"/>
+                </c:url>
+
+
                 <td>${doctor.id}</td>
-                <td>${doctor.name}</td>
+                <%--<td>${doctor.name}</td>--%>
+                <td><a href="<c:out value="${thisURL}"/>">${doctor.name}</a></td>
                 <td>${doctor.specialization}</td>
                 <td>${doctor.age}</td>
                 <td>${doctor.phone}</td>
-                <td><input type="button" value="EDIT" onclick="editClicked(${doctor.id})"/></td>
-                <td><input type="button" value="DELETE" onclick="deleteClicked(${doctor.id})"></td>
+                <%--<td><input type="button" value="EDIT" onclick="editClicked(${doctor.id})"/></td>--%>
+
+                <c:url var="thoseURL" value="./doctor/edit">
+                    <c:param name="id" value="${doctor.id}"/>
+                </c:url>
+                <td><a href="<c:out value="${thoseURL}"/>" ><img src="./resources/med_plus.png" width="23" height="23" border="0"> </a></td>
+
+                <c:url var="thoseURL" value="./doctor/edit">
+                    <c:param name="id" value="${doctor.id}"/>
+                </c:url>
+
+                <td><a href="" onclick="return deleteClicked(${doctor.id});"><img src="./resources/delete.png" width="23" height="23" border="0"> </a></td>
+
+            <%--<td><input type="button" value="DELETE" onclick="deleteClicked(${doctor.id})"></td>--%>
             </tr>
             </c:forEach>
             </tbody>
