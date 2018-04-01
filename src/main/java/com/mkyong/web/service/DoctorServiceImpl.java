@@ -2,6 +2,7 @@ package com.mkyong.web.service;
 
 import com.mkyong.web.dao.DoctorDAO;
 import com.mkyong.web.model.Doctor;
+import com.mkyong.web.model.dto.AppointmentDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,5 +51,11 @@ public class DoctorServiceImpl implements DoctorService {
         System.out.println("doctor = " + doctor);
         doctorDao.addDoctor(doctor);
         System.out.println("doctor = " + doctor);
+    }
+
+    @Override
+    @Transactional
+    public List<AppointmentDto> getAppointments(Integer id) {
+        return doctorDao.getAppointments(id);
     }
 }

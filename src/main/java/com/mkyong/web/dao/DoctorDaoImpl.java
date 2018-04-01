@@ -1,8 +1,10 @@
 package com.mkyong.web.dao;
 
 import com.mkyong.web.model.Doctor;
+import com.mkyong.web.model.dto.AppointmentDto;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -35,6 +37,29 @@ public class DoctorDaoImpl implements DoctorDAO {
         if (doctor != null) {
             getCurrentSession().delete(doctor);
         }
+    }
+
+
+    @Override
+    public List<AppointmentDto> getAppointments(Integer doctorId) {
+
+        //String sql = "SELECT a.id as id, p.name as petName , p.species as species, a.date as date\n " +
+        String sql = "SELECT a.id as id, p.name as petName , a.date as date\n " +
+                "FROM appointment a " +
+                "LEFT JOIN  pet p ON p.id = a.pet_id " +
+//                "LEFT JOIN appointment a ON p.id = a.pet_id " +
+//                "LEFT JOIN doctor d ON d.id = a.doctor_id " +
+                // "where a.`status` = 'PLANNED';";
+                "where a.doctor_id = " + doctorId + " and a.`status` = 'PLANNED';";
+
+
+        List<AppointmentDto> appList = getCurrentSession()
+                .createSQLQuery(sql)
+                .setResultTransformer(Transformers.aliasToBean(AppointmentDto.class))
+                .list();
+
+
+        return appList;
     }
 
     private Session getCurrentSession() {

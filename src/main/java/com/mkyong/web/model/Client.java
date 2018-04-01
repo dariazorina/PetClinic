@@ -14,6 +14,7 @@ public class Client extends SystemUser {
     private String address;
     private String phone;
 
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "master")
     private Set<Pet> pets  = new HashSet<Pet>();
 

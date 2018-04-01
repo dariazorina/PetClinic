@@ -2,6 +2,7 @@ package com.mkyong.web.model;
 
 import javax.persistence.*;
 import javax.print.Doc;
+import java.util.Date;
 
 @Entity
 @Table(name = "appointment")
@@ -19,7 +20,10 @@ public class Appointment {
     @JoinColumn(name = "pet_id", nullable = false)
     private Pet pet = new Pet();
 
-    private String date; //TODO Date
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
     private String status; //Enum
     private String comment; //Comment
 
@@ -51,11 +55,11 @@ public class Appointment {
         this.pet = pet;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

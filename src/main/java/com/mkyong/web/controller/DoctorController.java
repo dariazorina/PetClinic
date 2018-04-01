@@ -1,7 +1,9 @@
 package com.mkyong.web.controller;
 
 import com.mkyong.web.controller.api.UtilsApi;
+import com.mkyong.web.model.Client;
 import com.mkyong.web.model.Doctor;
+import com.mkyong.web.model.dto.AppointmentDto;
 import com.mkyong.web.service.DoctorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +30,19 @@ public class DoctorController {
         model.setViewName("doctors/doctors");
         model.addObject("msg", "TEST_NAME");
         model.addObject("doctorList", all);
+        return model;
+    }
+
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ModelAndView clientPage(@RequestParam(value = "id", required = false) Integer id) {
+        Doctor doctor = doctorService.getById(id);
+        List<AppointmentDto> appointments = doctorService.getAppointments(id);
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("doctors/mainPage");
+        model.addObject("doctor", doctor);
+        model.addObject("appointments", appointments);
         return model;
     }
 

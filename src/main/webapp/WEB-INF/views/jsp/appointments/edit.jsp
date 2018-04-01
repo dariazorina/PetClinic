@@ -7,6 +7,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../resources/core/js/edit.js"></script>
     <meta charset="UTF-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+
     <title>Edit Pet</title>
 </head>
 <body>
@@ -56,22 +70,43 @@
         </td>
         </tr>
         <tr>
-            <td>Date:</td>
-
-
-                <%--$.datepicker.setDefaults({--%>
-                <%--showOn: "both",--%>
-                <%--buttonImageOnly: true,--%>
-                <%--buttonImage: "calendar.gif",--%>
-                <%--buttonText: "Calendar"--%>
+                <%--$( ".selector" ).datepicker({--%>
+                <%--dateFormat: "yy-mm-dd"--%>
                 <%--});--%>
 
-            <td><form:input path="date"/></td>
+            <td>Date:</td>
             <td>
-                <c:if test="${ !empty errorMessages}">
-                    ${errorMessages.get("date")}
-                </c:if>
+                <%--<input type="text" path="date" id="datepicker">--%>
+                <form:input path="date" id="datepicker"></form:input>
+
+
             </td>
+            <script>
+                $("#datepicker").datepicker({
+                    onSelect: function (dateText, inst) {
+                        var dateAsString = dateText;
+                        var dateAsObject = $(this).datepicker('getDate');
+                    }
+
+                    <td>
+                    <c:if test="${ !empty errorMessages}">
+                    ${errorMessages.get(dateText)}
+                    </c:if>
+                    </td>
+                });
+
+
+
+                <%--var dateFormat = $( ".selector" ).datepicker( "option", "dateFormat" );--%>
+
+                <%--<td><form:input path="date"/></td>--%>
+
+                <%--<td>--%>
+                <%--<c:if test="${ !empty errorMessages}">--%>
+                    <%--${errorMessages.get("dateAsString")}--%>
+                <%--</c:if>--%>
+            <%--</td>--%>
+            </script>
         </tr>
         <tr>
             <td colspan="2">

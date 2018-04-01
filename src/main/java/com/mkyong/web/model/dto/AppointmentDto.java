@@ -1,11 +1,13 @@
 package com.mkyong.web.model.dto;
 
+import java.util.Date;
+
 public class AppointmentDto {
 
     private Integer id;
     private String petName;
     private String species;
-    private String date;
+    private Date date;
     private String doctorName;
 
     public Integer getId() {
@@ -32,11 +34,11 @@ public class AppointmentDto {
         this.species = species;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

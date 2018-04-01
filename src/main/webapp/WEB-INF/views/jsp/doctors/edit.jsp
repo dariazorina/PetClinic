@@ -14,9 +14,35 @@
 
 <form:form method="POST" commandName="doctor" id="edit_doctor_form" action="../doctor/edit">
     <form:input path="id" type="hidden" />
+    <form:input path="deleted" type="hidden"/>
+
 
     <legend>Doctor's Details:</legend> <br>
     <table>
+
+        <tr>
+            <td>Login:</td>
+            <td><input type="text" name="login" value="${doctor.login}" readonly="readonly"/></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><form:input path="password" type="password"/></td>
+            <td>
+                    <%--<c:if test="${ !empty errorMessages}">--%>
+                    <%--${errorMessages.get("password")}--%>
+                    <%--</c:if>--%>
+            </td>
+        </tr>
+        <tr>
+            <td>Logo:</td>
+            <td><form:input path="logo"/></td>
+            <td>
+                    <%--<c:if test="${ !empty errorMessages}">--%>
+                    <%--${errorMessages.get("password")}--%>
+                    <%--</c:if>--%>
+            </td>
+        </tr>
+
         <tr>
 
             <td>Name:</td>
@@ -61,7 +87,8 @@
 
                 <button type="submit">Save</button>
                 <%--<button type="button" onclick="postEditedDoctor()">Save</button>--%>
-                <button type="button" onclick="backToDoctorsList()">Cancel</button>
+                <button type="button" onclick="history.back()">Cancel</button>
+                <%--<button type="button" onclick="backToDoctorsList()">Cancel</button> for admin--%>
                 </td>
         </tr>
     </table>

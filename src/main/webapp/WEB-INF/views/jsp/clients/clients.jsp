@@ -20,9 +20,11 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Login</th>
+                <th>Logo</th>
                 <th>Address</th>
                 <th>Phone</th>
-                <th>Pets</th>
+                <th>Deleted</th>
                 <th>EDIT</th>
                 <th>DELETE</th>
 
@@ -34,9 +36,11 @@
                 <tr>
                     <td>${client.id}</td>
                     <td>${client.name}</td>
+                    <td>${client.login}</td>
+                    <td>${client.logo}</td>
                     <td>${client.address}</td>
                     <td>${client.phone}</td>
-                    <td></td>
+                    <td>${client.deleted}</td>
                     <td><input type="button" value="EDIT" onclick="editClicked(${client.id})"/></td>
                     <td><input type="button" value="DELETE" onclick="deleteClicked(${client.id})"></td>
                 </tr>

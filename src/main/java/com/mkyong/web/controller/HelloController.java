@@ -8,30 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/purchaseOrder")
+
 public class HelloController {
 
-	@RequestMapping(value = "/ppp", method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) {
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String printWelcome(ModelMap model) {
+        return "index";
+    }
 
-		model.addAttribute("message", "Spring 3 MVC Hello World");
-		model.addAttribute("message", "Spring 3 MVC Hello World");
-		model.addAttribute("message", "Spring 3 MVC Hello World");
-		model.addAttribute("message", "Spring 3 MVC Hello World");
-		model.addAttribute("message", "Spring 3 MVC Hello World");
-		return "hello";
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String printWelcomeqq(ModelMap model) {
+        return "index";
+    }
 
-	}
-
-	@RequestMapping(value = "/hello/{name:.+}", method = RequestMethod.GET)
-	public ModelAndView hello(@PathVariable("name") String name) {
-
-		ModelAndView model = new ModelAndView();
-		model.setViewName("hello");
-		model.addObject("msg", name);
-
-		return model;
-
-	}
 
 }
