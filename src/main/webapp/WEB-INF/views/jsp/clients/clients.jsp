@@ -15,7 +15,7 @@
 <div class="container">
     <h1>Clients List</h1>
     <div class="row col-md-7 table-responsive">
-        <table id="clientTable" class="table table-bordered table-hover">
+        <table id="clientTable" class="table_orange">
             <thead>
             <tr>
                 <th>Id</th>
@@ -33,9 +33,15 @@
             <tbody>
 
             <c:forEach var="client" items="${clientList}">
+
+                <c:url var="thisURL" value="./edit">
+                    <c:param name="id" value="${client.id}"/>
+                </c:url>
+
+
                 <tr>
                     <td>${client.id}</td>
-                    <td>${client.name}</td>
+                    <td><a href="<c:out value="${thisURL}"/>">${client.name}</a></td>
                     <td>${client.login}</td>
                     <td>${client.logo}</td>
                     <td>${client.address}</td>

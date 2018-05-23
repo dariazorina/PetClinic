@@ -1,6 +1,6 @@
 
 function editClicked(id) {
-    location = "../client/edit_admin?id=" + id;
+    location = "../client/edit?id=" + id;
 }
 
 function deleteClicked(id) {
@@ -33,5 +33,5 @@ function deleteClient(id) {
 
 
 function addNewClient() {
-    location = "../client/edit_admin";
+    location = "../client/edit";
 }

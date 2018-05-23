@@ -24,21 +24,21 @@
         <!--<intercept-url pattern="/**" access="isAuthenticated()" />-->
         <!--<intercept-url pattern="/*/*" access="isAuthenticated()"/>-->
 
-
-
+        <intercept-url pattern="/appointment/list" access="hasRole('ROLE_ADMIN')"/>
+        <!--http://localhost:8080/dasha/appointment/list-->
         <intercept-url pattern="/client/list" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/doctor/list" access="hasRole('ROLE_ADMIN')"/>
 
-        <intercept-url pattern="/client/edit_admin*" access="hasRole('ROLE_ADMIN')"/>
+        <!--<intercept-url pattern="/client/edit_admin*" access="hasRole('ROLE_ADMIN')"/>-->
 
 
-        <intercept-url pattern="/client/edit*" access="hasRole('ROLE_CLIENT')"/>
-        <intercept-url pattern="/client/*" access="hasAnyRole('ROLE_CLIENT')"/>
-        <intercept-url pattern="/client*" access="hasAnyRole('ROLE_CLIENT')"/>
+        <!--<intercept-url pattern="/client/edit*" access="hasRole('ROLE_CLIENT')"/>-->
+        <intercept-url pattern="/client/*" access="hasAnyRole('ROLE_CLIENT', 'ROLE_ADMIN')"/>
+        <intercept-url pattern="/client*" access="hasAnyRole('ROLE_CLIENT', 'ROLE_ADMIN')"/>
 
-        <intercept-url pattern="/doctor/edit*" access="hasRole('ROLE_DOCTOR')"/>
-        <intercept-url pattern="/doctor/*" access="hasRole('ROLE_DOCTOR')"/>
-        <intercept-url pattern="/doctor*" access="hasRole('ROLE_DOCTOR')"/>
+        <!--<intercept-url pattern="/doctor/edit*" access="hasRole('ROLE_DOCTOR')"/>-->
+        <intercept-url pattern="/doctor/*" access="hasAnyRole('ROLE_DOCTOR', 'ROLE_ADMIN')"/>
+        <intercept-url pattern="/doctor*" access="hasAnyRole('ROLE_DOCTOR', 'ROLE_ADMIN')"/>
 
 
 

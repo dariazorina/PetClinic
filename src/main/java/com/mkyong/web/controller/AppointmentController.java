@@ -6,6 +6,7 @@ import com.mkyong.web.model.Appointment;
 import com.mkyong.web.model.Client;
 import com.mkyong.web.model.Doctor;
 import com.mkyong.web.model.Pet;
+import com.mkyong.web.model.dto.AppointmentDto;
 import com.mkyong.web.service.AppointmentService;
 import com.mkyong.web.service.ClientService;
 import com.mkyong.web.service.DoctorService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -37,41 +39,62 @@ public class AppointmentController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
 
-        List<Appointment> all = appointmentService.getAll();
+        List<Appointment> all;
+        all = appointmentService.getAll();
+
+        List<AppointmentDto> allDTO;
+        allDTO = appointmentService.getAppointments();
 
         ModelAndView model = new ModelAndView();
         model.setViewName("appointments/appointments");
-        model.addObject("appointmentList", all);
+        model.addObject("appointmentList", allDTO);
         return model;
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public ModelAndView edit(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "pet_id", required = false) Integer pet_id) {
+    public ModelAndView edit(@RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "pet_id", required = false) Integer pet_id, HttpServletRequest request) {
 
-        Appointment appointment;
+        Appointment appointment = new Appointment();
+        Pet pet = new Pet();
+        ModelAndView model = new ModelAndView();
 
-        Pet pet = petService.getById(pet_id);
-        if (id == null) {
-            appointment = new Appointment();
-            appointment.setPet(pet);
+        if (request.isUserInRole("ROLE_ADMIN")) {
+            if (id != null) {
+                appointment = appointmentService.getById(id);
+            }
+
+            model.setViewName("appointments/admin/edit");
+            model.addObject("appointment", appointment);
+            model.addObject("doctors", doctorService.getAll());
+            model.addObject("pets", petService.getAll());
+            //  model.addObject("pet", pet);
+
         } else {
-            appointment = appointmentService.getById(id);
+            if (id == null) {
+                appointment = new Appointment();
+                if (pet_id != null) {
+                    pet = petService.getById(pet_id);
+                    appointment.setPet(pet);
+                }
+
+            } else {
+                appointment = appointmentService.getById(id);
+            }
+
+            model.setViewName("appointments/edit");
+            model.addObject("appointment", appointment);
+            model.addObject("doctors", doctorService.getAll());
+            model.addObject("pet", pet);
         }
 
-        ModelAndView model = new ModelAndView();
-        model.setViewName("appointments/edit");
-        model.addObject("appointment", appointment);
-        model.addObject("doctors", doctorService.getAll());
-        model.addObject("pet", pet);
         return model;
     }
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
 //    public ModelAndView edit(@RequestParam(value = "client_id", required = false) Integer client_id, @RequestParam(value="pet_id", required=false) Integer pet_id) {
-    public ModelAndView edit(Appointment appointment) {
+    public ModelAndView edit(Appointment appointment, HttpServletRequest request) {
 
-//        Doctor d = doctorService.getById(appointment.getDoctor().getId());
         Pet pet = petService.getById(appointment.getPet().getId());
 
         Map<String, String> validationResult = UtilsApi.fieldsValidation(appointment);
@@ -80,7 +103,12 @@ public class AppointmentController {
                 appointment.setStatus("PLANNED");
             }
             appointmentService.saveOrUpdate(appointment);
-            return new ModelAndView("redirect:/client?id=" + pet.getMaster().getId()); ///appointment/list");
+
+            if (request.isUserInRole("ROLE_ADMIN")) {
+                return new ModelAndView("redirect:/appointment/list");
+            } else {
+                return new ModelAndView("redirect:/client?id=" + pet.getMaster().getId()); ///appointment/list");
+            }
 
         } else {
             ModelAndView modelAndView = new ModelAndView("appointments/edit");

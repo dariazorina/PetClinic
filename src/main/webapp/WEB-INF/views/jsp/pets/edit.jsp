@@ -58,7 +58,7 @@
                 <button type="submit">Save</button>
                     <%--<button type="button" onclick="postEditedDoctor()">Save</button>--%>
                 <button type="button" onclick="backToPetsList(<%=request.getParameter("client_id")%>)">Cancel</button>
-                    <%--TODO--%>
+                    <%--TODO Cancel (if back to MainPage)--%>
 
                 <c:if test="${not empty pet.id}">
                     <c:if test="${doctors_count ne 0}">

@@ -1,4 +1,5 @@
 package com.mkyong.web.service;
+
 import org.springframework.security.core.GrantedAuthority;
 
 
@@ -53,9 +54,8 @@ public class CustomUserDetailsService implements UserDetailsService {
             if (systemUser instanceof Admin) {
                 authorities.add(new SimpleGrantedAuthority(ADMIN));
             }
-            CurrentUser currentUser = new CurrentUser(systemUser.getLogin(), systemUser.getPassword(), authorities, systemUser.getId());
-            return currentUser;
-          // return new org.springframework.security.core.userdetails.User(systemUser.getLogin(), systemUser.getPassword(), authorities);
+
+            return new CurrentUser(systemUser.getLogin(), systemUser.getPassword(), authorities, systemUser.getId());
         }
 
         throw new UsernameNotFoundException("User [" + login + "] not found");

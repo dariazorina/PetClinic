@@ -16,7 +16,7 @@
 <%--<div class="container">--%>
     <%--<h1>Pets List</h1>--%>
     <%--<div class="row col-md-7 table-responsive">--%>
-        <%--<table id="petsTable" class="table table-bordered table-hover">--%>
+        <%--<table id="petsTable" class="table_orange">--%>
             <%--<thead>--%>
             <%--<tr>--%>
                 <%--<th>Id</th>--%>

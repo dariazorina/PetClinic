@@ -1,6 +1,7 @@
 package com.mkyong.web.dao;
 
 import com.mkyong.web.model.Appointment;
+import com.mkyong.web.model.dto.AppointmentDto;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface AppointmentDAO {
     List<Appointment> getAllAppointments();
 
     void removeAppointment(Integer id);
+
+    List<AppointmentDto> getAppointments();
 }

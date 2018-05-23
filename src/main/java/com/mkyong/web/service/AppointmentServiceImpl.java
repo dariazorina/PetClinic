@@ -2,6 +2,7 @@ package com.mkyong.web.service;
 
 import com.mkyong.web.dao.AppointmentDAO;
 import com.mkyong.web.model.Appointment;
+import com.mkyong.web.model.dto.AppointmentDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,5 +43,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Transactional
     public void delete(Integer id) {
         appointmentDAO.removeAppointment(id);
+    }
+
+    @Override
+    @Transactional
+    public List<AppointmentDto> getAppointments() {
+        return appointmentDAO.getAppointments();
     }
 }

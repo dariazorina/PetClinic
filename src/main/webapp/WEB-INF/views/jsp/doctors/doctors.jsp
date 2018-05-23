@@ -20,14 +20,17 @@
 <div class="container">
     <h1>Doctors List JSP ${msg}</h1>
     <div class="row col-md-7 table-responsive">
-        <table id="doctorTable" class="table table-bordered table-hover">
+        <table id="doctorTable" class="table_orange">
             <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Login</th>
+                <th>Logo</th>
                 <th>Specialization</th>
                 <th>Age</th>
                 <th>Phone</th>
+                <th>Deleted</th>
                 <th>EDIT</th>
                 <th>DELETE</th>
 
@@ -43,23 +46,25 @@
 
 
                 <td>${doctor.id}</td>
-                <%--<td>${doctor.name}</td>--%>
                 <td><a href="<c:out value="${thisURL}"/>">${doctor.name}</a></td>
+                <td>${doctor.login}</td>
+                <td>${doctor.logo}</td>
                 <td>${doctor.specialization}</td>
                 <td>${doctor.age}</td>
                 <td>${doctor.phone}</td>
+                <td>${doctor.deleted}</td>
                 <%--<td><input type="button" value="EDIT" onclick="editClicked(${doctor.id})"/></td>--%>
 
-                <c:url var="thoseURL" value="./doctor/edit">
+                <c:url var="thoseURL" value="./edit">
                     <c:param name="id" value="${doctor.id}"/>
                 </c:url>
-                <td><a href="<c:out value="${thoseURL}"/>" ><img src="./resources/med_plus.png" width="23" height="23" border="0"> </a></td>
+                <td><a href="<c:out value="${thoseURL}"/>" ><img src="../resources/med_plus.png" width="23" height="23" border="0"> </a></td>
 
-                <c:url var="thoseURL" value="./doctor/edit">
+                <c:url var="thoseURL" value="./edit">
                     <c:param name="id" value="${doctor.id}"/>
                 </c:url>
 
-                <td><a href="" onclick="return deleteClicked(${doctor.id});"><img src="./resources/delete.png" width="23" height="23" border="0"> </a></td>
+                <td><a href="" onclick="return deleteClicked(${doctor.id});"><img src="../resources/delete.png" width="23" height="23" border="0"> </a></td>
 
             <%--<td><input type="button" value="DELETE" onclick="deleteClicked(${doctor.id})"></td>--%>
             </tr>

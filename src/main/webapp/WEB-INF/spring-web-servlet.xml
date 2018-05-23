@@ -32,6 +32,8 @@
 	</bean>
 
 
+	<!--<mvc:default-servlet-handler/>  &lt;!&ndash;for test added&ndash;&gt;-->
+
 	<mvc:resources mapping="/resources/**" location="/resources/" />
  
 	<mvc:annotation-driven />

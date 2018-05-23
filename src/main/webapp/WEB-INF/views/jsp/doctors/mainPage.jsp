@@ -27,7 +27,7 @@
 
 
         <div class="row col-md-7 table-responsive">
-            <table id="appTable" class="table table-bordered table-hover">
+            <table id="appTable" class="table_orange">
                 <thead>
                 <tr>
                     <th>Id</th>

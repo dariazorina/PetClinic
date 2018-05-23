@@ -65,13 +65,12 @@ public class PetController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public ModelAndView edit(Pet pet) {
 
-
         Map<String, String> validationResult = UtilsApi.fieldsValidation(pet);
         if (validationResult.size() == 0) {
             petService.saveOrUpdate(pet);
             return new ModelAndView("redirect:/client?id=" + pet.getMaster().getId());
         } else {
-            ModelAndView modelAndView = new ModelAndView("pets/edit");
+            ModelAndView modelAndView = new ModelAndView("redirect:/edit?client_id=" + pet.getMaster().getId());
             modelAndView.addObject("errorMessages", validationResult);
             modelAndView.addObject("pet", pet);
             return modelAndView;

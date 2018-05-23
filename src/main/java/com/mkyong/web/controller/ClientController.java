@@ -2,23 +2,22 @@ package com.mkyong.web.controller;
 
 import com.mkyong.web.controller.api.UtilsApi;
 import com.mkyong.web.model.Client;
+import com.mkyong.web.model.CurrentUser;
 import com.mkyong.web.model.dto.AppointmentDto;
 import com.mkyong.web.service.ClientService;
-import com.mkyong.web.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/client")
@@ -27,8 +26,8 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @Autowired
-    private PetService petService;
+//    @Autowired
+//    private PetService petService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
@@ -72,29 +71,39 @@ public class ClientController {
 //        return model;
 //    }
 
-    @RequestMapping(value = "/edit*", method = RequestMethod.GET)  //for admin and client both
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)  //for admin and client both
     public ModelAndView adminEdit(@RequestParam(value = "id", required = false) Integer id) {
 
+        ModelAndView model = new ModelAndView();
         Client client;
+
         if (id == null) {
             client = new Client();
 
         } else {
             client = clientService.getById(id);
+            List<AppointmentDto> appointments = clientService.getAppointments(id);
+            model.addObject("appointments", appointments);
         }
 
-        ModelAndView model = new ModelAndView();
         model.setViewName("clients/edit");
         model.addObject("client", client);
         return model;
     }
 
 
-    @RequestMapping(value = "/edit*", method = RequestMethod.POST)
-    public ModelAndView edit(Client client, HttpServletRequest request) {
-  //  public ModelAndView edit(Client client) {
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public ModelAndView edit(Client client, HttpServletRequest request, Principal principal) {
 
-        UserDetails userDetails;
+        UsernamePasswordAuthenticationToken upat = (UsernamePasswordAuthenticationToken) principal;
+        CurrentUser currentUser = (CurrentUser) upat.getPrincipal();
+        Integer currentUserId = currentUser.getId();
+        if (client.getId() != currentUserId) {
+            //todo redirect to hell
+//            return new ModelAndView("redirect:../");
+        }
+
+
         Map<String, String> validationResult = UtilsApi.fieldsValidation(client);
         if (validationResult.size() == 0) {
             clientService.saveOrUpdate(client);
@@ -106,8 +115,7 @@ public class ClientController {
 
             if (request.isUserInRole("ROLE_ADMIN")) {
                 return new ModelAndView("redirect:/client/list");
-            } else
-            {
+            } else {
                 return new ModelAndView("redirect:../");
             }
 

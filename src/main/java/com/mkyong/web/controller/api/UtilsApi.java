@@ -67,14 +67,18 @@ public class UtilsApi {
 
         Map<String, String> validationResult = new HashMap<>();
 
-        if (pet.getName().length() < 2) {
+       if (pet.getName().length() < 2) {
             validationResult.put("name", "length of this field should be greater than 2 characters");
         }
+
         if (pet.getSpecies().length() < 2) {
             validationResult.put("species", "length of this field should be greater than 2 characters");
         }
 
-        if (pet.getAge() < 1 || pet.getAge() > 350) {
+        if (pet.getAge() == null) {
+            validationResult.put("age", "this field shouldn't be empty");
+        }
+        else if (pet.getAge() < 1 || pet.getAge() > 350) {
             validationResult.put("age", "value of this field should be in range from 1 to 350");
         }
 

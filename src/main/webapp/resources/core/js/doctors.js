@@ -43,22 +43,22 @@ function editClicked(id) {
     location = "../doctor/edit?id=" + id;
 }
 
+// function deleteClicked(id) {
+//
+//     var result = confirm("Do you really want to delete this doctor?");
+//     if (result) {
+//         deleteDoctor(id);
+//     }
+// }
+
+
 function deleteClicked(id) {
 
-    var result = confirm("Do you really want to delete this doctor?");
-    if (result) {
-        deleteDoctor(id);
-    }
-}
-
-
-function deleteClicked(id) {
-
-    var result = confirm("Do you really want to delete this doctor?");
+    var result = confirm("Do you really want to delete this doctor)))?");
     if (result) {
 
         $.ajax({
-            url: "./doctor?id="+id,
+            url: "../doctor?id="+id,
             type: 'DELETE',
             success: function (result) {
                 location.reload();

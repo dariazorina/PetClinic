@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
@@ -66,12 +67,19 @@ public class DoctorController {
 
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ModelAndView edit(Doctor doctor) {
+    public ModelAndView edit(Doctor doctor, HttpServletRequest request, Principal principal) {
 
         Map<String, String> validationResult = UtilsApi.fieldsValidation(doctor);
         if (validationResult.size() == 0) {
             doctorService.saveOrUpdate(doctor);
-            return new ModelAndView("redirect:/doctor/list");
+//            return new ModelAndView("redirect:/doctor/list");
+
+            if (request.isUserInRole("ROLE_ADMIN")) {
+                return new ModelAndView("redirect:/doctor/list");
+            } else {
+                return new ModelAndView("redirect:../");
+            }
+
 
         } else {
             ModelAndView modelAndView = new ModelAndView("doctors/edit");
