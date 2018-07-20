@@ -32,93 +32,110 @@
 <form:form method="POST" commandName="appointment" id="edit_appointment_form" action="./../appointment/edit">
     <form:input path="id" type="hidden"/>
 
-    <legend>Appointment's Details For: (admin version)</legend>
-    <br>
-    <table>
-        <tr>
+<legend>Appointment's Details For: (admin version)</legend>
+<br>
+<table>
+    <tr>
 
-        <tr>
-            <td>Pet:</td>
-
-            <td>
-                <form:select path="pet.id">
-                    <form:options items="${pets}" itemLabel="name" itemValue="id"/>
-                </form:select>
-
-            </td>
-        </tr>
-
-        <td>Doctor's name:</td>
-            <%--<td><form:input path="doctor_name" /></td>--%>
+    <tr>
+        <td>Pet:</td>
 
         <td>
-            <form:select path="doctor.id">
-                <form:options items="${doctors}" itemLabel="name" itemValue="id"/>
+            <form:select path="pet.id">
+                <form:options items="${pets}" itemLabel="name" itemValue="id"/>
             </form:select>
 
-                <%--<c:forEach var="appointment" items="${appointmentList}">--%>
-                <%--<select name="doctors">--%>
-                <%--<c:forEach var="item" items="${doctors}">--%>
-                <%--<option value="${item.name}">${item.name}</option>--%>
-                <%--</c:forEach>--%>
-                <%--</select>--%>
-                <%--<form:input path="doctor" type="hidden" value = "request.getParameter('doctors')"/>--%>
         </td>
+    </tr>
+
+    <td>Doctor's name:</td>
+        <%--<td><form:input path="doctor_name" /></td>--%>
+
+    <td>
+        <form:select path="doctor.id">
+            <form:options items="${doctors}" itemLabel="name" itemValue="id"/>
+        </form:select>
+
+            <%--<c:forEach var="appointment" items="${appointmentList}">--%>
+            <%--<select name="doctors">--%>
+            <%--<c:forEach var="item" items="${doctors}">--%>
+            <%--<option value="${item.name}">${item.name}</option>--%>
+            <%--</c:forEach>--%>
+            <%--</select>--%>
+            <%--<form:input path="doctor" type="hidden" value = "request.getParameter('doctors')"/>--%>
+    </td>
+    <td>
+        <c:if test="${ !empty errorMessages}">
+            ${errorMessages.get("doctor_name")}
+        </c:if>
+    </td>
+    </tr>
+    <tr>
+            <%--$( ".selector" ).datepicker({--%>
+            <%--dateFormat: "yy-mm-dd"--%>
+            <%--});--%>
+
+        <td>Date:</td>
         <td>
-            <c:if test="${ !empty errorMessages}">
-                ${errorMessages.get("doctor_name")}
-            </c:if>
-        </td>
-        </tr>
-        <tr>
-                <%--$( ".selector" ).datepicker({--%>
-                <%--dateFormat: "yy-mm-dd"--%>
-                <%--});--%>
 
-            <td>Date:</td>
-            <td>
-                    <%--<input type="text" path="date" id="datepicker">--%>
+            <%--dsfsdfsdfsdfsdf--%>
+                <input type="text" path="date" value=<%=new SimpleDateFormat("MM/dd/yyyy").format(((Appointment) request.getAttribute("appointment")).getDate())%> id="datepicker">
+
+                <%--<input type="text" path="date" value="31/03/2017" id="datepicker">--%>
+
                 <%--<form:input path="date" id="datepicker"></form:input>--%>
-               <%
-                   SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-                   Appointment appointment = (Appointment)request.getAttribute("appointment");
-                   String format = sdf.format(appointment.getDate());
-                   out.print("<input id=\"datepicker\" name=\"date\" type=\"text\" value=\""+ format +"\" class=\"hasDatepicker\">");
-               %>
+                <%--<script>var javascriptValue = <%=--%>
 
 
+                <%--<%--%>
+                <%--SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");--%>
+                <%--Appointment appointment = (Appointment) request.getAttribute("appointment");--%>
+                <%--if (appointment.getDate() != null) {--%>
+                <%--String format = sdf.format(appointment.getDate());--%>
+                <%--System.out.print("<input id=\"datepicker\" name=\"date\" type=\"text\" value=\"" + format + "\" class=\"hasDatepicker\">");--%>
+                <%--System.out.print("1212121212121");//format);--%>
 
+                <%--} else {--%>
+                <%--Date date = new Date();--%>
+                <%--String format = sdf.format(date);--%>
+                <%--System.out.println("<input id=\"datepicker\" name=\"date\" type=\"text\" value=\"" + format + "\" class=\"hasDatepicker\">");--%>
+                <%--}--%>
+                <%--%>--%>
 
-
-
-
+                <%--<script>var javascriptValue = <%=valueFromYourJavaCode%></script>--%>
+                <%--<%format%>--%>
 
             </td>
             <script>
-                $("#datepicker").datepicker({
-                    onSelect: function (dateText, inst) {
-                        var dateAsString = dateText;
-                        var dateAsObject = $(this).datepicker('getDate');
-                    }
-
-                    <td>
-                    <c:if test="${ !empty errorMessages}">
-                    ${errorMessages.get(dateText)}
-                    </c:if>
-                    </td>
-                });
 
 
+            $("#datepicker").datepicker({
+            onSelect: function (dateText, inst) {
+            var dateAsString = dateText;
+            var dateAsObject = $(this).datepicker('getDate');
+            },
+
+            defaultDate: "5/31/2013",
+            hour: 19,
+            minute: 30
+            }
+
+                <%--<td>--%>
+                <%--<c:if test="${ !empty errorMessages}">--%>
+                <%--${errorMessages.get(dateText)}--%>
+                <%--</c:if>--%>
+                <%--</td>--%>
+            );
 
 
-
-
-
+            <%--$("#datepicker").datepicker({--%>
+            <%--defaultDate: "5/31/2013",--%>
+            <%--hour: 19,--%>
+            <%--minute: 30--%>
+            <%--});--%>
 
                 <%--var dateFormat = $( ".selector" ).datepicker( "option", "dateFormat" );--%>
-
                 <%--<td><form:input path="date"/></td>--%>
-
                 <%--<td>--%>
                 <%--<c:if test="${ !empty errorMessages}">--%>
                 <%--${errorMessages.get("dateAsString")}--%>
