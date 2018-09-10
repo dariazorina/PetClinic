@@ -1,0 +1,6 @@
+input#image-button{
+    background: #ccc url('../../med_plus.png') no-repeat top left;
+    padding-left: 0px;
+    height: 27px;
+    width: 27px;
+}

@@ -1,0 +1,33 @@
+
+table {
+    border-collapse: collapse;
+}
+
+.forEdit, .forEdit.th, .forEdit.td, .forEdit.tr {
+    border: 0px solid black;
+}
+
+/*.forEdit, th, td, tr {*/
+    /*border: 0px solid black;*/
+/*}*/
+
+.table_orange td , .table_orange th {
+    border: 1px solid black;
+}
+
+
+.table_orange, th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+.table_orange {
+    border-bottom: 1px solid #ddd;
+}
+
+.table_orange th {
+    background-color: #fb9902;
+    color: white;
+}
+
+.table_orange, tr:nth-child(even) {background-color: #f2f2f2;}
