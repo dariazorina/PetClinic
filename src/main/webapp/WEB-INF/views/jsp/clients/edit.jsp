@@ -164,7 +164,7 @@
                                                                         height="23" border="0"> </a></td>
                             <%--<td><input type="button" value="" id="image-button" onclick="makeAnAppointment(${pet.master.id}, ${pet.id})"></td>--%>
 
-                        <td><a href="" onclick="return deleteClicked(${pet.id});"><img src="../resources/delete.png"
+                        <td><a href="" onclick="return deleteClickedAsAdmin(${pet.id});"><img src="../resources/delete.png"
                                                                                        width="23" height="23"
                                                                                        border="0"> </a></td>
                             <%--<td><input type="button" value="DELETE" onclick="deleteClicked(${pet.id})"></td>--%>

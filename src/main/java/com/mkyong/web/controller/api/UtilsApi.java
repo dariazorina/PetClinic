@@ -89,7 +89,7 @@ public class UtilsApi {
 //            validationResult.put("doctor_name", "length of this field should be greater than 2 characters");
 //        }
 
-        if (appointment.getDate().length()<4 ) {
+        if (appointment.getDate().length() < 4 ) {
             validationResult.put("date", "value of this field is incorrect");
         }
 

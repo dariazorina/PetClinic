@@ -1,5 +1,7 @@
 package com.mkyong.web.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,6 +17,7 @@ public class Doctor extends SystemUser {
     private String phone;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
+    @Cascade({org.hibernate.annotations.CascadeType.DELETE})
     private Set<Appointment> appointments;
 
 

@@ -1,5 +1,7 @@
 package com.mkyong.web.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.List;
@@ -22,6 +24,7 @@ public class Pet {
     private Client master;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pet")
+    @Cascade({org.hibernate.annotations.CascadeType.DELETE})
     private Set<Appointment> appointments;
 
     public Pet() {
