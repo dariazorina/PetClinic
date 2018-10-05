@@ -162,12 +162,10 @@
 
                         <td><a href="<c:out value="${thoseURL}"/>"><img src="../resources/med_plus.png" width="23"
                                                                         height="23" border="0"> </a></td>
-                            <%--<td><input type="button" value="" id="image-button" onclick="makeAnAppointment(${pet.master.id}, ${pet.id})"></td>--%>
 
                         <td><a href="" onclick="return deleteClickedAsAdmin(${pet.id});"><img src="../resources/delete.png"
                                                                                        width="23" height="23"
                                                                                        border="0"> </a></td>
-                            <%--<td><input type="button" value="DELETE" onclick="deleteClicked(${pet.id})"></td>--%>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -200,11 +198,6 @@
                     <th>Id</th>
                     <th>Doctor</th>
                     <th>Date</th>
-                        <%--<th>Status</th>--%>
-                        <%--<th>Comment</th>--%>
-                        <%--<th>EDIT</th>--%>
-                        <%--<th>DELETE</th>--%>
-
                 </tr>
                 </thead>
                 <tbody>
@@ -213,9 +206,6 @@
                 <c:forEach var="appointment" items="${appointments}">
 
                     <c:if test="${appointment.petName == pet.name}">
-
-
-
                         <tr>
                             <td>${appointment.id}</td>
                             <td>${appointment.doctorName}</td>
