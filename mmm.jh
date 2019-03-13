@@ -1,0 +1,53 @@
+entity Grade{
+	gradeName String
+}
+
+entity SchoolClass {
+	className String
+}
+
+entity Student{
+   	firstName String,
+	lastName String,
+	email String
+}
+
+entity SchoolGroup{
+	groupName String
+    maxCount Integer
+    minCount Integer
+}
+
+entity Subject {
+	subjectName String,
+    necessary Boolean
+}
+
+
+
+relationship ManyToMany {
+    SchoolClass{grades(gradeName)} to Grade{classes(className)} 
+    Student{groups(groupName)} to SchoolGroup 
+    SchoolGroup{subject(subjectName)} to Subject{groups(groupName)}
+}
+
+
+relationship ManyToOne {
+    Student{grade(gradeName)} to Grade
+    Subject{grade(gradeName)} to Grade {subjects(subjectName)}       
+    Student{schoolClass(className) } to SchoolClass{students}
+}
+
+
+
+
+// Set pagination options
+paginate Grade, SchoolClass , Student , Subject, SchoolGroup  with infinite-scroll
+// paginate Job with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+
